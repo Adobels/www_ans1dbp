@@ -1,0 +1,863 @@
+:root {
+  --blue-950: #071733;
+  --blue-900: #102a56;
+  --blue-700: #174a8b;
+  --blue-100: #eaf1fb;
+  --red-700: #bb1f2d;
+  --red-600: #d52b3a;
+  --white: #ffffff;
+  --ink: #172033;
+  --muted: #5c677d;
+  --line: #d8deea;
+  --surface: #f7f9fc;
+  --shadow: 0 18px 50px rgba(7, 23, 51, 0.14);
+  --radius: 8px;
+  --header-height: 82px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--white);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(213, 43, 58, 0.5);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: 12px;
+  z-index: 100;
+  transform: translateY(-150%);
+  background: var(--white);
+  color: var(--blue-900);
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  font-weight: 800;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  min-height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 12px clamp(18px, 4vw, 56px);
+  color: var(--white);
+  background: linear-gradient(180deg, rgba(7, 23, 51, 0.82), rgba(7, 23, 51, 0.25));
+  transition: background 180ms ease, box-shadow 180ms ease;
+}
+
+.site-header.is-scrolled,
+.site-header.nav-active {
+  background: rgba(7, 23, 51, 0.96);
+  box-shadow: 0 10px 32px rgba(7, 23, 51, 0.26);
+}
+
+.brand,
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand img,
+.footer-brand img {
+  width: 44px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.brand strong,
+.footer-brand span {
+  display: block;
+  font-size: 1rem;
+  letter-spacing: 0;
+}
+
+.brand small {
+  display: block;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 0.78rem;
+  margin-top: -2px;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 2vw, 26px);
+  font-size: 0.94rem;
+  font-weight: 720;
+}
+
+.site-nav a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.site-nav a:hover {
+  color: var(--white);
+}
+
+.language-switch {
+  display: inline-flex;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.language-switch button {
+  min-width: 38px;
+  border: 0;
+  padding: 7px 10px;
+  color: var(--white);
+  background: transparent;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.language-switch button[aria-current="true"] {
+  background: var(--white);
+  color: var(--blue-900);
+}
+
+.language-switch button:disabled {
+  color: rgba(255, 255, 255, 0.44);
+}
+
+.nav-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin: 5px auto;
+  background: var(--white);
+}
+
+.hero {
+  position: relative;
+  min-height: 96svh;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  padding: 150px clamp(20px, 6vw, 80px) 90px;
+}
+
+.hero-media,
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-media {
+  background-image: url("assets/Monument_1st_armoured_polish_division_Normandy_Dday.jpg");
+  background-size: cover;
+  background-position: center 32%;
+  transform: scale(1.02);
+}
+
+.hero-overlay {
+  background:
+    linear-gradient(90deg, rgba(7, 23, 51, 0.9), rgba(7, 23, 51, 0.58) 46%, rgba(187, 31, 45, 0.18)),
+    linear-gradient(0deg, rgba(7, 23, 51, 0.82), transparent 46%);
+}
+
+.hero-content {
+  position: relative;
+  max-width: 1080px;
+  color: var(--white);
+}
+
+.kicker {
+  margin: 0 0 12px;
+  color: var(--red-600);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section-dark .kicker,
+.hero .kicker {
+  color: #ffccd2;
+}
+
+h1,
+h2,
+h3,
+p {
+  overflow-wrap: anywhere;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.08;
+}
+
+h1 {
+  max-width: 980px;
+  font-size: clamp(2.15rem, 5.2vw, 5.7rem);
+  font-weight: 900;
+}
+
+h2 {
+  font-size: clamp(2rem, 3.5vw, 4rem);
+  font-weight: 900;
+  color: var(--blue-950);
+}
+
+h3 {
+  font-size: 1.18rem;
+}
+
+.hero-subtitle {
+  max-width: 760px;
+  margin: 24px 0 0;
+  font-size: clamp(1.08rem, 2vw, 1.45rem);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 20px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 850;
+  line-height: 1.2;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  color: var(--white);
+  background: var(--red-700);
+  box-shadow: 0 14px 34px rgba(187, 31, 45, 0.24);
+}
+
+.button-secondary {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.46);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.button-light {
+  color: var(--blue-900);
+  background: var(--white);
+}
+
+.button-outline {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.45);
+}
+
+.hero-actions,
+.support-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  width: 28px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  border-radius: 999px;
+  transform: translateX(-50%);
+}
+
+.scroll-cue::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--white);
+  transform: translateX(-50%);
+  animation: scrollDot 1.6s ease-in-out infinite;
+}
+
+@keyframes scrollDot {
+  0%, 100% { transform: translate(-50%, 0); opacity: 0.35; }
+  50% { transform: translate(-50%, 13px); opacity: 1; }
+}
+
+.section {
+  padding: clamp(72px, 10vw, 132px) clamp(20px, 5vw, 72px);
+}
+
+.section-inner {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.two-column,
+.contact-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(32px, 6vw, 80px);
+  align-items: start;
+}
+
+.section-heading p:not(.kicker) {
+  max-width: 720px;
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.centered {
+  text-align: center;
+}
+
+.text-panel {
+  padding-left: clamp(20px, 4vw, 52px);
+  border-left: 4px solid var(--red-600);
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.history-section {
+  background:
+    linear-gradient(180deg, var(--surface), var(--white));
+}
+
+.history-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.95fr) minmax(0, 1.05fr);
+  gap: clamp(34px, 6vw, 72px);
+  align-items: center;
+  margin-top: 56px;
+}
+
+.history-photo {
+  margin: 0;
+}
+
+.history-photo img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 20px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: linear-gradient(var(--blue-700), var(--red-600));
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 0 50px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  border: 4px solid var(--white);
+  border-radius: 50%;
+  background: var(--red-600);
+  box-shadow: 0 0 0 2px var(--red-600);
+}
+
+.timeline-year {
+  display: inline-block;
+  margin-bottom: 6px;
+  color: var(--blue-700);
+  font-weight: 900;
+}
+
+.timeline-item p,
+.activity-card p,
+.person-card p {
+  color: var(--muted);
+}
+
+.card-grid,
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 42px;
+}
+
+.activity-card,
+.person-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 10px 28px rgba(7, 23, 51, 0.06);
+}
+
+.activity-card {
+  min-height: 218px;
+  padding: 26px;
+}
+
+.card-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 28px;
+  border-radius: 50%;
+  color: var(--white);
+  background: var(--blue-900);
+  font-weight: 900;
+  font-size: 0.82rem;
+}
+
+.board-section {
+  background: var(--surface);
+}
+
+.person-card {
+  padding: 24px;
+  text-align: center;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 82px;
+  height: 82px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  color: var(--white);
+  background:
+    linear-gradient(135deg, rgba(23, 74, 139, 0.98), rgba(187, 31, 45, 0.92)),
+    var(--blue-900);
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+.person-card p {
+  min-height: 48px;
+  margin: 0 0 10px;
+  font-size: 0.92rem;
+}
+
+.gallery-section {
+  background:
+    linear-gradient(180deg, rgba(7, 23, 51, 0.93), rgba(16, 42, 86, 0.94)),
+    url("assets/Cimetière_polonais_de_Langannerie.jpg") center / cover fixed;
+}
+
+.section-dark h2,
+.section-dark .section-heading p:not(.kicker) {
+  color: var(--white);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: 230px;
+  gap: 14px;
+  margin-top: 42px;
+}
+
+.gallery-item {
+  position: relative;
+  margin: 0;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--blue-900);
+}
+
+.gallery-item.large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gallery-item.portrait img {
+  object-fit: contain;
+  padding: 28px;
+  background: var(--white);
+}
+
+.gallery-item img,
+.image-backed::before {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-backed::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.72;
+}
+
+.montormel::before {
+  background-image: url("assets/Monument_1st_armoured_polish_division_Normandy_Dday.jpg");
+}
+
+.ceremony::before,
+.flags::before {
+  background-image: url("assets/Cimetière_polonais_de_Langannerie.jpg");
+}
+
+.flags::before {
+  filter: saturate(1.15) contrast(1.08);
+}
+
+.gallery-item figcaption {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  z-index: 1;
+  margin: 0;
+  color: var(--white);
+  font-weight: 850;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+}
+
+.gallery-item::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 42%;
+  background: linear-gradient(0deg, rgba(7, 23, 51, 0.75), transparent);
+}
+
+.support-band {
+  padding: 54px clamp(20px, 5vw, 72px);
+  color: var(--white);
+  background: linear-gradient(100deg, var(--blue-900), var(--blue-700) 58%, var(--red-700));
+}
+
+.support-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.support-content h2 {
+  color: var(--white);
+  font-size: clamp(1.8rem, 3vw, 3.1rem);
+}
+
+.support-actions {
+  margin-top: 0;
+  justify-content: flex-end;
+}
+
+.contact-details {
+  margin-top: 32px;
+  color: var(--muted);
+}
+
+.contact-details a {
+  color: var(--blue-700);
+  font-weight: 800;
+}
+
+.contact-form {
+  display: grid;
+  gap: 12px;
+  padding: clamp(22px, 4vw, 36px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.contact-form label {
+  color: var(--blue-950);
+  font-weight: 850;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 13px 14px;
+  color: var(--ink);
+  background: var(--surface);
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form button {
+  justify-self: start;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.site-footer {
+  color: rgba(255, 255, 255, 0.78);
+  background: var(--blue-950);
+  padding: 34px clamp(20px, 5vw, 72px);
+}
+
+.footer-inner {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+
+.site-footer nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.site-footer a {
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--white);
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 1040px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .site-nav {
+    position: fixed;
+    inset: var(--header-height) 0 0;
+    display: grid;
+    align-content: start;
+    gap: 0;
+    padding: 18px 20px 32px;
+    background: rgba(7, 23, 51, 0.98);
+    transform: translateX(100%);
+    transition: transform 220ms ease;
+  }
+
+  .site-nav.is-open {
+    transform: translateX(0);
+  }
+
+  .site-nav a {
+    padding: 16px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 1.1rem;
+  }
+
+  .language-switch {
+    width: max-content;
+    margin-top: 18px;
+  }
+
+  .card-grid,
+  .board-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --header-height: 74px;
+  }
+
+  .site-header {
+    padding: 10px 16px;
+  }
+
+  .brand img {
+    width: 36px;
+    height: 50px;
+  }
+
+  .brand small {
+    display: none;
+  }
+
+  .hero {
+    min-height: 94svh;
+    padding: 126px 18px 78px;
+  }
+
+  .hero-media {
+    background-position: center top;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(180deg, rgba(7, 23, 51, 0.62), rgba(7, 23, 51, 0.9)),
+      linear-gradient(90deg, rgba(187, 31, 45, 0.18), rgba(23, 74, 139, 0.18));
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .two-column,
+  .contact-layout,
+  .history-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .text-panel {
+    padding-left: 20px;
+  }
+
+  .card-grid,
+  .board-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-auto-rows: 240px;
+  }
+
+  .gallery-item.large {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .support-content {
+    display: block;
+  }
+
+  .support-actions {
+    justify-content: stretch;
+    margin-top: 24px;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .site-footer nav {
+    justify-content: flex-start;
+  }
+}
