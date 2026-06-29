@@ -616,14 +616,22 @@ figcaption {
   text-transform: uppercase;
 }
 
-.social-card a,
-.social-card p {
+.site-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-list li {
   display: inline-flex;
   align-items: center;
   gap: 10px;
 }
 
-.social-card span[aria-hidden="true"] {
+.site-list span[aria-hidden="true"] {
+  flex: 0 0 auto;
   font-size: 1.35rem;
 }
 
