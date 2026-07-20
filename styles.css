@@ -127,8 +127,19 @@ textarea {
   padding: 150px clamp(20px, 6vw, 80px) 90px;
 }
 
+.event-hero {
+  position: relative;
+  min-height: 94svh;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  padding: 150px clamp(20px, 6vw, 80px) 86px;
+}
+
 .hero-media,
-.hero-overlay {
+.hero-overlay,
+.event-hero-media,
+.event-hero-overlay {
   position: absolute;
   inset: 0;
 }
@@ -140,15 +151,34 @@ textarea {
   transform: scale(1.02);
 }
 
+.event-hero-media {
+  background-image: url("assets/Cimetière_Polonais_Urville_Wiki.jpeg");
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+}
+
 .hero-overlay {
   background:
     linear-gradient(90deg, rgba(7, 23, 51, 0.9), rgba(7, 23, 51, 0.58) 46%, rgba(187, 31, 45, 0.18)),
     linear-gradient(0deg, rgba(7, 23, 51, 0.82), transparent 46%);
 }
 
+.event-hero-overlay {
+  background:
+    linear-gradient(90deg, rgba(7, 23, 51, 0.92), rgba(16, 42, 86, 0.68) 54%, rgba(187, 31, 45, 0.18)),
+    linear-gradient(0deg, rgba(7, 23, 51, 0.86), rgba(7, 23, 51, 0.08) 58%);
+}
+
 .hero-content {
   position: relative;
   max-width: 1080px;
+  color: var(--white);
+}
+
+.event-hero-content {
+  position: relative;
+  max-width: 980px;
   color: var(--white);
 }
 
@@ -201,6 +231,38 @@ h3 {
   margin: 24px 0 0;
   font-size: clamp(1.08rem, 2vw, 1.45rem);
   color: rgba(255, 255, 255, 0.88);
+}
+
+.event-hero-lead {
+  max-width: 760px;
+  margin: 24px 0 0;
+  font-size: clamp(1.08rem, 2vw, 1.38rem);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.event-date-card {
+  display: inline-grid;
+  gap: 4px;
+  margin-top: 26px;
+  padding: 16px 20px;
+  border-left: 4px solid var(--red-600);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.event-date-card span {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.event-date-card strong {
+  color: var(--white);
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  line-height: 1;
 }
 
 .button {
@@ -562,6 +624,30 @@ figcaption {
   background: linear-gradient(100deg, var(--blue-900), var(--blue-700) 58%, var(--red-700));
 }
 
+.event-band {
+  padding: 54px clamp(20px, 5vw, 72px);
+  color: var(--white);
+  background: linear-gradient(100deg, var(--blue-900), var(--blue-700) 58%, var(--red-700));
+}
+
+.event-band-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 28px;
+  align-items: center;
+}
+
+.event-band h2 {
+  color: var(--white);
+  font-size: clamp(1.8rem, 3vw, 3.1rem);
+}
+
+.event-band p:not(.kicker) {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1.08rem;
+}
+
 .support-content {
   display: flex;
   align-items: center;
@@ -635,6 +721,132 @@ figcaption {
   font-size: 1.35rem;
 }
 
+.event-rsvp {
+  background: var(--surface);
+}
+
+.event-callout {
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+  padding: clamp(28px, 5vw, 48px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.event-callout h2 {
+  max-width: 760px;
+}
+
+.event-callout p:not(.kicker) {
+  max-width: 720px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.compact-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.event-schedule {
+  display: grid;
+  gap: 22px;
+  margin-top: 42px;
+}
+
+.event-schedule-item {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 28px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  box-shadow: 0 10px 28px rgba(7, 23, 51, 0.06);
+}
+
+.event-time {
+  color: var(--blue-900);
+  font-size: 1.45rem;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.event-details {
+  padding-left: 28px;
+  border-left: 3px solid var(--red-600);
+}
+
+.event-details h3 {
+  color: var(--blue-950);
+  font-size: 1.35rem;
+}
+
+.event-location {
+  margin: 8px 0 0;
+  color: var(--red-700);
+  font-weight: 850;
+}
+
+.event-details p {
+  color: var(--muted);
+}
+
+.event-details ul {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+}
+
+.event-history a,
+.event-access a,
+.event-links a {
+  color: var(--blue-700);
+  font-weight: 800;
+}
+
+.event-previous {
+  background:
+    linear-gradient(180deg, rgba(7, 23, 51, 0.93), rgba(16, 42, 86, 0.94)),
+    url("assets/Cimetière_polonais_de_Langannerie.jpg") center / cover fixed;
+}
+
+.event-previous-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: clamp(28px, 5vw, 56px);
+  align-items: center;
+  margin-top: 42px;
+}
+
+.event-collage {
+  margin: 0;
+}
+
+.event-collage img {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.event-previous-text {
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 1.05rem;
+}
+
+.event-previous-text p {
+  margin: 0 0 16px;
+}
+
+.event-team {
+  background: var(--surface);
+}
+
 .site-footer {
   color: rgba(255, 255, 255, 0.78);
   background: var(--blue-950);
@@ -699,6 +911,14 @@ figcaption {
   .gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .compact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .event-previous-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 760px) {
@@ -724,6 +944,11 @@ figcaption {
     padding: 126px 18px 78px;
   }
 
+  .event-hero {
+    min-height: 94svh;
+    padding: 126px 18px 78px;
+  }
+
   .hero-media {
     background-position: center top;
   }
@@ -734,12 +959,20 @@ figcaption {
       linear-gradient(90deg, rgba(187, 31, 45, 0.18), rgba(23, 74, 139, 0.18));
   }
 
+  .event-hero-overlay {
+    background:
+      linear-gradient(180deg, rgba(7, 23, 51, 0.64), rgba(7, 23, 51, 0.92)),
+      linear-gradient(90deg, rgba(187, 31, 45, 0.18), rgba(23, 74, 139, 0.18));
+  }
+
   .button {
     width: 100%;
   }
 
   .two-column,
-  .history-layout {
+  .history-layout,
+  .event-band-inner,
+  .event-schedule-item {
     grid-template-columns: 1fr;
   }
 
@@ -749,8 +982,18 @@ figcaption {
 
   .card-grid,
   .board-grid,
-  .gallery-grid {
+  .gallery-grid,
+  .compact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .event-schedule-item {
+    gap: 16px;
+    padding: 24px;
+  }
+
+  .event-details {
+    padding-left: 20px;
   }
 
   .contact-card {
