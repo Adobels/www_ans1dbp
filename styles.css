@@ -834,6 +834,10 @@ figcaption {
   box-shadow: var(--shadow);
 }
 
+.event-collage figcaption {
+  color: rgba(255, 255, 255, 0.82);
+}
+
 .event-previous-text {
   color: rgba(255, 255, 255, 0.84);
   font-size: 1.05rem;
